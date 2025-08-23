@@ -1,0 +1,51 @@
+{
+  "feat_cfg": {
+    "fuzzy_vendor": 0.7,
+    "max_alias_len": 4,
+    "laplace_a": 1.0,
+    "laplace_b": 1.0,
+    "bm25_full_weight": 0.5,
+    "bm25_skills_weight": 0.5,
+    "final_skill_weight": 0.5,
+    "final_bm25_weight": 0.5,
+    "use_embedding": true,
+    "emb_model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "emb_device": null,
+    "emb_batch_size": 64,
+    "emb_cache_path": "cache/emb_sbert.pkl",
+    "emb_per_jd_norm": true
+  },
+  "rank_cfg": {
+    "features": [
+      "vendor_cov",
+      "bm25_full_norm",
+      "bm25_skills_norm",
+      "bm25_combo",
+      "emb_cosine_norm"
+    ],
+    "ndcg_at": [
+      5,
+      10
+    ],
+    "label_map": null,
+    "gain_mode": "exp",
+    "objective": "rank:ndcg",
+    "learning_rate": 0.05,
+    "n_estimators": 1500,
+    "max_depth": 6,
+    "subsample": 0.9,
+    "colsample_bytree": 0.9,
+    "reg_lambda": 1.0,
+    "tree_method": "hist",
+    "monotone_positive": true,
+    "verbose": 1
+  },
+  "feature_names_": [
+    "vendor_cov",
+    "bm25_full_norm",
+    "bm25_skills_norm",
+    "bm25_combo",
+    "emb_cosine_norm"
+  ],
+  "random_state": 42
+}
