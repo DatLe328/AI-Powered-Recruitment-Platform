@@ -1,6 +1,6 @@
 import re
 import pandas as pd
-from ml import ai_gateway
+from ml import apis
 
 
 """Rank by number of occurrences of 'python' (case insensitive) minus 'java'."""
@@ -18,10 +18,10 @@ class FakeRanker:
         return out
 
 def test_rank_cv_for_jd(monkeypatch):
-    monkeypatch.setattr(ai_gateway, "_MODEL", None)
-    monkeypatch.setattr(ai_gateway.CVJDXGBRanker, "load", staticmethod(lambda *a, **kw: FakeRanker()))
+    monkeypatch.setattr(apis, "_MODEL", None)
+    monkeypatch.setattr(apis.CVJDXGBRanker, "load", staticmethod(lambda *a, **kw: FakeRanker()))
 
-    results = ai_gateway.rank_cv_for_jd(
+    results = apis.rank_cv_for_jd(
         job_requirement="Must-have: Python, FastAPI, PostgreSQL",
         job_description="We build APIs and CI/CD.",
         candidates=[
@@ -41,10 +41,10 @@ def test_rank_cv_for_jd(monkeypatch):
     assert all(abs(r["score"] - r["pred"]) < 1e-9 for r in results)
 
 def test_topk(monkeypatch):
-    monkeypatch.setattr(ai_gateway, "_MODEL", None)
-    monkeypatch.setattr(ai_gateway.CVJDXGBRanker, "load", staticmethod(lambda *a, **kw: FakeRanker()))
+    monkeypatch.setattr(apis, "_MODEL", None)
+    monkeypatch.setattr(apis.CVJDXGBRanker, "load", staticmethod(lambda *a, **kw: FakeRanker()))
 
-    results = ai_gateway.rank_cv_for_jd(
+    results = apis.rank_cv_for_jd(
         job_requirement="Python",
         job_description="",
         candidates=[{"resume_text":"python"}, {"resume_text":"java"}, {"resume_text":"python python"}],

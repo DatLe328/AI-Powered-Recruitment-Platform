@@ -3,7 +3,7 @@ import pandas as pd
 import pytest
 
 # import module gateway
-from ml import ai_gateway
+from ml import apis
 
 class FakeRanker:
     """Giả lập XGBRanker: rank theo số lần 'python' trừ số lần 'java'."""
@@ -19,10 +19,10 @@ class FakeRanker:
 
 def test_rank_cv_for_jd_monkeypatched(monkeypatch):
     # reset model cache
-    monkeypatch.setattr(ai_gateway, "_MODEL", None)
+    monkeypatch.setattr(apis, "_MODEL", None)
 
     # patch: CVJDXGBRanker.load -> FakeRanker()
-    monkeypatch.setattr(ai_gateway.CVJDXGBRanker, "load", staticmethod(lambda m, c: FakeRanker()))
+    monkeypatch.setattr(apis.CVJDXGBRanker, "load", staticmethod(lambda m, c: FakeRanker()))
 
     # call gateway
     jd_req = "Must-have: Python and SQL"
@@ -34,7 +34,7 @@ def test_rank_cv_for_jd_monkeypatched(monkeypatch):
         {"cv_id":"cv-4","resume_text":"C++ only"},
         {"cv_id":"cv-5","resume_text":"python python (two hits)"},
     ]
-    results = ai_gateway.rank_cv_for_jd(
+    results = apis.rank_cv_for_jd(
         job_requirement=jd_req,
         job_description=jd_desc,
         candidates=cands,
@@ -52,10 +52,10 @@ def test_rank_cv_for_jd_monkeypatched(monkeypatch):
     assert all(abs(r["score"] - r["pred"]) < 1e-9 for r in results)
 
 def test_topk(monkeypatch):
-    monkeypatch.setattr(ai_gateway, "_MODEL", None)
-    monkeypatch.setattr(ai_gateway.CVJDXGBRanker, "load", staticmethod(lambda m, c: FakeRanker()))
+    monkeypatch.setattr(apis, "_MODEL", None)
+    monkeypatch.setattr(apis.CVJDXGBRanker, "load", staticmethod(lambda m, c: FakeRanker()))
 
-    results = ai_gateway.rank_cv_for_jd(
+    results = apis.rank_cv_for_jd(
         job_requirement="Python",
         job_description="",
         candidates=[{"resume_text":"python"}, {"resume_text":"java"}, {"resume_text":"python python"}],

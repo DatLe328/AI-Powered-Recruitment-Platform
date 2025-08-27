@@ -1,1 +1,1 @@
-from .xgb import *
+from .xgb import CVJDXGBRanker

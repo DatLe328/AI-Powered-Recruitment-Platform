@@ -5,7 +5,7 @@ from rest_framework.test import APIClient
 
 @pytest.mark.django_db
 def test_api_rank_endpoint(monkeypatch):
-    from ml import ai_gateway
+    from ml import apis
 
     # giả lập rank_cv_for_jd trả kết quả tĩnh
     def fake_rank_cv_for_jd(**kwargs):
@@ -13,7 +13,7 @@ def test_api_rank_endpoint(monkeypatch):
             {"jd_id":"jd-abc","cv_id":"cv-1","pred":0.9,"score":0.9},
             {"jd_id":"jd-abc","cv_id":"cv-2","pred":0.1,"score":0.1},
         ]
-    monkeypatch.setattr(ai_gateway, "rank_cv_for_jd", fake_rank_cv_for_jd)
+    monkeypatch.setattr(apis, "rank_cv_for_jd", fake_rank_cv_for_jd)
 
     client = APIClient()
     payload = {

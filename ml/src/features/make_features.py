@@ -2,14 +2,13 @@ from __future__ import annotations
 from typing import List, Set
 import numpy as np
 import pandas as pd
-from ..scoring import SkillExtractor
-from ..retrieval import bm25_full_groupwise, bm25_skills_groupwise, groupwise_minmax
-from ..embedder import SbertConfig, SbertEmbedder, add_sbert_similarity_feature
+from ml.src.scoring import SkillExtractor
+from ml.src.retrieval import bm25_full_groupwise, bm25_skills_groupwise, groupwise_minmax
+from ml.src.embedder import SbertConfig, SbertEmbedder, add_sbert_similarity_feature, get_sbert_embedder
 
 
 def build_features(
     df: pd.DataFrame,
-    *,
     fuzzy_vendor: float = 0.70,
     max_alias_len: int = 4,
     laplace_a: float = 1.0,
@@ -59,7 +58,7 @@ def build_features(
             jd_skills[row]  = jd_all
 
     feats["vendor_cov"]  = vendor_cov
-    feats["skill_score"] = vendor_cov  # alias
+    feats["skill_score"] = vendor_cov 
 
     tmp = feats.copy()
     tmp["bm25_full"] = bm25_full_groupwise(
@@ -90,7 +89,7 @@ def build_features(
             normalize=True,
             cache_path=emb_cache_path,
         )
-        embedder = SbertEmbedder(cfg)
+        embedder = get_sbert_embedder(cfg)
         add_sbert_similarity_feature(
             feats,
             embedder=embedder,

@@ -154,17 +154,59 @@
         <mxCell id="z1g-to0Jhm5u873KXFVh-32" value="&amp;nbsp;Feature Engineering Layer (cosine, kỹ năng, etc)&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="265" y="690" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0E7ccboekJZ89U0tzrHS-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="0E7ccboekJZ89U0tzrHS-1" target="z1g-to0Jhm5u873KXFVh-5">
+        <mxCell id="0E7ccboekJZ89U0tzrHS-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="0E7ccboekJZ89U0tzrHS-1" target="z1g-to0Jhm5u873KXFVh-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0E7ccboekJZ89U0tzrHS-1" value="ESCO dataset" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="0E7ccboekJZ89U0tzrHS-1" value="ESCO dataset" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-360" y="960" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0E7ccboekJZ89U0tzrHS-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="0E7ccboekJZ89U0tzrHS-2" target="z1g-to0Jhm5u873KXFVh-5">
+        <mxCell id="0E7ccboekJZ89U0tzrHS-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="0E7ccboekJZ89U0tzrHS-2" target="z1g-to0Jhm5u873KXFVh-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0E7ccboekJZ89U0tzrHS-2" value="Skill dataset" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="0E7ccboekJZ89U0tzrHS-2" value="Skill dataset" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-360" y="1060" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ghRL2U-yaganppZx_M2X-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ghRL2U-yaganppZx_M2X-2" target="ghRL2U-yaganppZx_M2X-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ghRL2U-yaganppZx_M2X-2" value="Stage1:&amp;nbsp; FAISS/BM25 Top 1000" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-485" y="1240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ghRL2U-yaganppZx_M2X-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="ghRL2U-yaganppZx_M2X-3" target="ghRL2U-yaganppZx_M2X-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ghRL2U-yaganppZx_M2X-3" value="Stage 2: Bi-encoder re-rank top 100." style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-280" y="1240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ghRL2U-yaganppZx_M2X-4" value="Stage 3: Cross-encoder re-rank top 10." style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-60" y="1240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dfFWvl_Ygy0lwbcqGyCY-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dfFWvl_Ygy0lwbcqGyCY-2" target="dfFWvl_Ygy0lwbcqGyCY-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dfFWvl_Ygy0lwbcqGyCY-2" value="Lightcast dataset" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-825" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dfFWvl_Ygy0lwbcqGyCY-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dfFWvl_Ygy0lwbcqGyCY-3" target="dfFWvl_Ygy0lwbcqGyCY-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dfFWvl_Ygy0lwbcqGyCY-3" value="Fetch and process" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-595" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dfFWvl_Ygy0lwbcqGyCY-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dfFWvl_Ygy0lwbcqGyCY-4" target="dfFWvl_Ygy0lwbcqGyCY-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dfFWvl_Ygy0lwbcqGyCY-4" value="Job description" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-375" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dfFWvl_Ygy0lwbcqGyCY-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dfFWvl_Ygy0lwbcqGyCY-5" target="dfFWvl_Ygy0lwbcqGyCY-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dfFWvl_Ygy0lwbcqGyCY-5" value="Labeling" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-375" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dfFWvl_Ygy0lwbcqGyCY-9" value="Train spacy" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-145" y="480" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

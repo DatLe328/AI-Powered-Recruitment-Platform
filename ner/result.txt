@@ -1,0 +1,189 @@
+{
+  "text": "JD: Role Specific Experience: 6+ years of relevant technical and business work experience The Candidates who have worked on Basel related projects in Credit risks or at least are aware of credit risk. Banking & Financial domain experience, along with knowledge of risk management, familiarity with concepts of finance and accounting Proficiency in MS Excel Experience in defining and implementing technology solutions for a major financial institution Extensive experience as a Business Analyst for a large financial institution Extensive experience in gathering business requirements and developing functional specifications with special emphasis on use cases, defining test cases, and providing user training and support Extensive experience with various system development lifecycle methodologies and tailoring the artifacts to those methodologies Solution-oriented, detailed-focused, showing strong analytical and organization skills Familiarity with relational databases RDMS Experience with writing simple SQL statements (mostly SELECT with aim to analyze datasets)",
+  "results": {
+    "full_matches": [
+      {
+        "skill_id": "ES1E6EFF7F7429763B50",
+        "skill_name": "Credit Risk",
+        "skill_type": "Hard Skill",
+        "start": 188,
+        "end": 199,
+        "match": "credit risk",
+        "source": "high"
+      },
+      {
+        "skill_id": "KS120WT63K4HC6NX7QXV",
+        "skill_name": "Banking",
+        "skill_type": "Hard Skill",
+        "start": 201,
+        "end": 208,
+        "match": "Banking",
+        "source": "high"
+      },
+      {
+        "skill_id": "KS125ZB6BWF5RY40BH1B",
+        "skill_name": "Risk Management",
+        "skill_type": "Hard Skill",
+        "start": 264,
+        "end": 279,
+        "match": "risk management",
+        "source": "high"
+      },
+      {
+        "skill_id": "KS123MC78KV644P5DDZ0",
+        "skill_name": "Finance",
+        "skill_type": "Hard Skill",
+        "start": 310,
+        "end": 317,
+        "match": "finance",
+        "source": "high"
+      },
+      {
+        "skill_id": "KS1203W702ND09XHKJR5",
+        "skill_name": "Accounting",
+        "skill_type": "Hard Skill",
+        "start": 322,
+        "end": 332,
+        "match": "accounting",
+        "source": "high"
+      },
+      {
+        "skill_id": "KS120WT70DM8WX59219Z",
+        "skill_name": "Financial Institution",
+        "skill_type": "Hard Skill",
+        "start": 430,
+        "end": 451,
+        "match": "financial institution",
+        "source": "high"
+      },
+      {
+        "skill_id": "KS120WT70DM8WX59219Z",
+        "skill_name": "Financial Institution",
+        "skill_type": "Hard Skill",
+        "start": 507,
+        "end": 528,
+        "match": "financial institution",
+        "source": "high"
+      },
+      {
+        "skill_id": "ESD6B3E26476FDF09DE3",
+        "skill_name": "Systems Development",
+        "skill_type": "Hard Skill",
+        "start": 757,
+        "end": 775,
+        "match": "system development",
+        "source": "high"
+      },
+      {
+        "skill_id": "KS4425C7820LCHZS7VGX",
+        "skill_name": "Writing",
+        "skill_type": "Soft Skill",
+        "start": 997,
+        "end": 1004,
+        "match": "writing",
+        "source": "high"
+      },
+      {
+        "skill_id": "KS440W865GC4VRBW6LJP",
+        "skill_name": "SQL (Programming Language)",
+        "skill_type": "Hard Skill",
+        "start": 1012,
+        "end": 1015,
+        "match": "SQL",
+        "source": "high"
+      }
+    ],
+    "partial_matches": [
+      {
+        "skill_id": "KS125J670LNYRQDDB4NZ",
+        "skill_name": "JD Edwards EnterpriseOne",
+        "skill_type": "Hard Skill",
+        "start": 0,
+        "end": 2,
+        "match": "JD",
+        "source": "low"
+      },
+      {
+        "skill_id": "KS442215YXN54YPR8WFH",
+        "skill_name": "WHO Adverse Reactions Terminology (WHOART)",
+        "skill_type": "Hard Skill",
+        "start": 105,
+        "end": 108,
+        "match": "who",
+        "source": "low"
+      },
+      {
+        "skill_id": "KS124YH6T4ZGKKGHDL55",
+        "skill_name": "IBM Personal Computer/AT",
+        "skill_type": "Hard Skill",
+        "start": 166,
+        "end": 168,
+        "match": "at",
+        "source": "low"
+      }
+    ],
+    "token_scanner": []
+  },
+  "unique_skills": {
+    "KS125J670LNYRQDDB4NZ": {
+      "skill_name": "JD Edwards EnterpriseOne",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    },
+    "KS442215YXN54YPR8WFH": {
+      "skill_name": "WHO Adverse Reactions Terminology (WHOART)",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    },
+    "KS124YH6T4ZGKKGHDL55": {
+      "skill_name": "IBM Personal Computer/AT",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    },
+    "ES1E6EFF7F7429763B50": {
+      "skill_name": "Credit Risk",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    },
+    "KS120WT63K4HC6NX7QXV": {
+      "skill_name": "Banking",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    },
+    "KS125ZB6BWF5RY40BH1B": {
+      "skill_name": "Risk Management",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    },
+    "KS123MC78KV644P5DDZ0": {
+      "skill_name": "Finance",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    },
+    "KS1203W702ND09XHKJR5": {
+      "skill_name": "Accounting",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    },
+    "KS120WT70DM8WX59219Z": {
+      "skill_name": "Financial Institution",
+      "skill_type": "Hard Skill",
+      "occurrences": 2
+    },
+    "ESD6B3E26476FDF09DE3": {
+      "skill_name": "Systems Development",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    },
+    "KS4425C7820LCHZS7VGX": {
+      "skill_name": "Writing",
+      "skill_type": "Soft Skill",
+      "occurrences": 1
+    },
+    "KS440W865GC4VRBW6LJP": {
+      "skill_name": "SQL (Programming Language)",
+      "skill_type": "Hard Skill",
+      "occurrences": 1
+    }
+  }
+}

@@ -22,3 +22,37 @@ class RankResponseItemSerializer(serializers.Serializer):
     cv_id = serializers.CharField()
     pred = serializers.FloatField()
     score = serializers.FloatField()   # final score sau khi bonus
+
+from django.contrib.auth.models import User
+from rest_framework import serializers
+from .models import CV, JD
+
+class RegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, min_length=6)
+    class Meta:
+        model = User
+        fields = ["username", "email", "password"]
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username=validated_data["username"],
+            email=validated_data.get("email",""),
+            password=validated_data["password"],
+        )
+        return user
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "email"]
+
+class CVSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    class Meta:
+        model = CV
+        fields = ["id", "user", "title", "resume_text", "is_active", "created_at", "updated_at"]
+
+class JDSerializer(serializers.ModelSerializer):
+    owner = UserSerializer(read_only=True)
+    class Meta:
+        model = JD
+        fields = ["id", "owner", "title", "description", "requirements", "location", "is_active", "created_at", "updated_at"]

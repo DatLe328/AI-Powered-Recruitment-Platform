@@ -27,9 +27,29 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework", 
+    "rest_framework.authtoken",
     "corsheaders", 
     "matching",
+    'drf_yasg',
+    "django.contrib.postgres",
+    "pgvector.django",
 ]
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
+    ),
+}
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+}
+# Câu SQL dùng để build FAISS từ Postgres (nếu cần)
+CANDIDATE_SQL = os.getenv("CANDIDATE_SQL", "SELECT id, resume_text FROM matching_cv WHERE is_active = TRUE")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +71,7 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],
     "DEFAULT_PARSER_CLASSES": ["rest_framework.parsers.JSONParser"],
 }
+FAISS_INDEX_DIR = os.getenv("FAISS_INDEX_DIR", os.path.join(BASE_DIR, "ml", "models", "retrieval"))
 ROOT_URLCONF = 'recruitapi.urls'
 
 TEMPLATES = [
@@ -75,9 +96,13 @@ WSGI_APPLICATION = 'recruitapi.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "recruitdb",
+        "USER": "postgres",
+        "PASSWORD": "Abc@12345",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 

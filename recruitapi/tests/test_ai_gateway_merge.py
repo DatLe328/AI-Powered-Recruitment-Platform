@@ -1,4 +1,4 @@
-from ml.ai_gateway import _merge_jd
+from ml.apis import _merge_jd
 
 def test_merge_jd():
     assert _merge_jd("req", "desc") == "req\n\ndesc"

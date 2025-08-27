@@ -8,7 +8,7 @@ import pandas as pd
 from xgboost import XGBRanker
 from sklearn.model_selection import GroupShuffleSplit
 from scipy.stats import spearmanr, pearsonr
-from ..features import build_features
+from ml.src.features import build_features
 
 DEFAULT_FEATURES: List[str] = [
     "vendor_cov", "bm25_full_norm", "bm25_skills_norm", "bm25_combo", "emb_cosine_norm"
@@ -139,7 +139,7 @@ class RankerConfig:
     features: List[str] = None
     ndcg_at: List[int] = None
     label_map: Optional[Dict[str, int]] = None
-    gain_mode: str = "exp"               # chỉ dùng khi tự tính metric báo cáo
+    gain_mode: str = "exp"
 
     # XGBRanker params
     objective: str = "rank:ndcg"         # 'rank:pairwise' / 'rank:ndcg' / 'rank:map'

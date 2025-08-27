@@ -1,9 +1,15 @@
 from __future__ import annotations
+from pyexpat import model
 import os, re, hashlib, pickle
 from dataclasses import dataclass
 from typing import List, Optional, Tuple, Dict
 import numpy as np
 from sentence_transformers import SentenceTransformer
+import threading
+
+_SBERT_LOCK = threading.RLock()
+_SBERT_MODELS = {}    # key: (model_name, device) -> SentenceTransformer
+_SBERT_WRAPPERS = {}  # optional: cache SbertEmbedder objects per cfg
 
 def _norm_text(s: str) -> str:
     s = (s or "").lower()
@@ -49,7 +55,12 @@ class SbertConfig:
 class SbertEmbedder:
     def __init__(self, cfg: SbertConfig):
         self.cfg = cfg
-        self.model = SentenceTransformer(cfg.model_name, device=cfg.device)
+        key = (cfg.model_name, cfg.device or 'cpu')
+        with _SBERT_LOCK:
+            self.model = _SBERT_MODELS.get(key)
+            if self.model is None:
+                self.model = SentenceTransformer(cfg.model_name, device=cfg.device)
+                _SBERT_MODELS[key] = self.model
         self.batch_size = int(cfg.batch_size)
         self.normalize = bool(cfg.normalize)
         self.cache = EmbCache(cfg.cache_path)
@@ -84,6 +95,9 @@ class SbertEmbedder:
         if self.normalize:
             arr = self._l2norm(arr)
         return arr
+    def encode_texts(self, texts, normalize=True):
+        embs = self.model.encode(texts, normalize_embeddings=normalize, batch_size=32)
+        return np.array(embs).astype("float32")
 
 def add_sbert_similarity_feature(
     df,
@@ -114,3 +128,12 @@ def add_sbert_similarity_feature(
             lambda x: (x - x.min()) / (x.max() - x.min() + 1e-12)
         )
     return E_jd, E_cv
+
+def get_sbert_embedder(cfg: SbertConfig) -> "SbertEmbedder":
+    key = (cfg.model_name, cfg.device or 'cpu', int(cfg.batch_size), bool(cfg.normalize), cfg.cache_path or '')
+    with _SBERT_LOCK:
+        inst = _SBERT_WRAPPERS.get(key)
+        if inst is None:
+            inst = SbertEmbedder(cfg)
+            _SBERT_WRAPPERS[key] = inst
+        return inst
