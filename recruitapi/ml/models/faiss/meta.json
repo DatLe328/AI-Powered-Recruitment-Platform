@@ -1,0 +1,7 @@
+{
+  "dim": 384,
+  "count": 1,
+  "metric": "ip_cosine",
+  "index_kind": "hnsw",
+  "created_at": 1756481146
+}

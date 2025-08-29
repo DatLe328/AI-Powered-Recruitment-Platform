@@ -934,10 +934,10 @@ model-index:
       type: unknown
     metrics:
     - type: pearson_cosine
-      value: 0.6906930218699814
+      value: 0.691753618098123
       name: Pearson Cosine
     - type: spearman_cosine
-      value: 0.7033007706012226
+      value: 0.704748666013613
       name: Spearman Cosine
 ---
 
@@ -1002,9 +1002,9 @@ print(embeddings.shape)
 # Get the similarity scores for the embeddings
 similarities = model.similarity(embeddings, embeddings)
 print(similarities)
-# tensor([[1.0000, 0.2802, 0.8325],
-#         [0.2802, 1.0000, 0.3488],
-#         [0.8325, 0.3488, 1.0000]])
+# tensor([[1.0000, 0.2823, 0.8294],
+#         [0.2823, 1.0000, 0.3561],
+#         [0.8294, 0.3561, 1.0000]])
 ```
 
 <!--
@@ -1041,8 +1041,8 @@ You can finetune this model on your own dataset.
 
 | Metric              | Value      |
 |:--------------------|:-----------|
-| pearson_cosine      | 0.6907     |
-| **spearman_cosine** | **0.7033** |
+| pearson_cosine      | 0.6918     |
+| **spearman_cosine** | **0.7047** |
 
 <!--
 ## Bias, Risks and Limitations
@@ -1231,6 +1231,7 @@ You can finetune this model on your own dataset.
 | 2.3707 | 550  | -             | 0.6953          |
 | 2.5862 | 600  | -             | 0.6996          |
 | 2.8017 | 650  | -             | 0.7033          |
+| 3.0    | 696  | -             | 0.7047          |
 
 
 ### Framework Versions

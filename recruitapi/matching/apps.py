@@ -8,12 +8,11 @@ class MatchingConfig(AppConfig):
 
     def ready(self):
         mgmt_cmds_to_skip = {
-            "makemigrations","migrate","collectstatic","shell",
-            "createsuperuser","loaddata","dumpdata","test","pytest", "build_faiss_index"
+            "makemigrations","migrate","collectstatic","shell", "flush",
+            "createsuperuser","loaddata","dumpdata","test","pytest", "build_faiss_index", "initdata"
         }
         if any(cmd in sys.argv for cmd in mgmt_cmds_to_skip):
             return
-
         def _warm():
             from ml.src.embedder import SbertConfig, get_sbert_embedder
             from django.conf import settings
@@ -51,3 +50,4 @@ class MatchingConfig(AppConfig):
                     log.warning("FAISS index chưa có. Hãy chạy: python manage.py build_faiss_index --recompute")
             except Exception as e:
                 import logging; logging.getLogger(__name__).warning(f"AI warmup skipped: {e}")
+        _warm()
